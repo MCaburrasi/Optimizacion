@@ -35,6 +35,15 @@ public class Factovisor {
         return map;
     }
 
+    public static int s(int n, int b){
+        int sum = 0;
+        while (n >= 1){
+            sum += n % b;
+            n = n / b;
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()) {
@@ -48,13 +57,9 @@ public class Factovisor {
             } else {
                 Map<Integer, Integer> primeDecomposition = PrimeDecomposition(n);
                 for (Map.Entry<Integer, Integer> prime : primeDecomposition.entrySet()) {
-                    String spS = new BigInteger(Integer.toString(m)).toString(prime.getKey());
-                    int sp = 0;
-                    for (int i = 0; i < spS.length(); i++) {
-                        sp += Integer.parseInt(String.valueOf(spS.charAt(i)));
-                    }
+                    int sum = s(m, prime.getKey());
 
-                    factovisor = (m - sp) / (prime.getKey() - 1) >= prime.getValue();
+                    factovisor = (m - sum) / (prime.getKey() - 1) >= prime.getValue();
 
                     if (!factovisor) break;
                 }
