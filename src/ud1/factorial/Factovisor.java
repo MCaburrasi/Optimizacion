@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Factovisor {
-
     public static Map<Integer, Integer> PrimeDecomposition(int n) {
         Map<Integer, Integer> map = new HashMap<>();
 
@@ -35,7 +34,7 @@ public class Factovisor {
         return map;
     }
 
-    public static int s(int n, int b){
+    public static int sumation(int n, int b){
         int sum = 0;
         while (n >= 1){
             sum += n % b;
@@ -57,7 +56,7 @@ public class Factovisor {
             } else {
                 Map<Integer, Integer> primeDecomposition = PrimeDecomposition(n);
                 for (Map.Entry<Integer, Integer> prime : primeDecomposition.entrySet()) {
-                    int sum = s(m, prime.getKey());
+                    int sum = sumation(m, prime.getKey());
 
                     factovisor = (m - sum) / (prime.getKey() - 1) >= prime.getValue();
 
